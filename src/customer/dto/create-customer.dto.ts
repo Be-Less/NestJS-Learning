@@ -1,9 +1,9 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsInt, IsNumber, IsString } from "class-validator";
 
 export class CreateCustomerDTO {
   @IsString()
   name: string;
 
-  @IsNumber()
+  @IsInt()
   age: number;
 }
