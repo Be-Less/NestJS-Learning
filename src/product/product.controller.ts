@@ -9,8 +9,8 @@ export class ProductController {
   getProducts() {
     return this.productService.getAllproducts();
   }
-  @Get(":id")
-  getProductsById(@Param('id') id: string){
+  @Get(':id')
+  getProductsById(@Param('id') id: string) {
     return this.productService.getProductById(Number(id));
   }
 }
