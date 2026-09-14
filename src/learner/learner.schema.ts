@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { timeStamp } from 'console';
 import { Document } from 'mongoose';
 
 export type LearnerDocument = Learner & Document;
@@ -13,6 +14,8 @@ export class Learner {
 
   @Prop()
   email?: string; 
+
 }
+// timeStamp: true;
 
 export const LearnerSchme = SchemaFactory.createForClass(Learner);

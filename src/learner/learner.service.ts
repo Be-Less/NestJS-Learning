@@ -21,4 +21,11 @@ export class LearnerService {
   async getLearnerById(id: string): Promise<Learner | null> {
     return this.learnerModel.findById(id).exec();
   }
+
+  async updateLearner(
+    id: string,
+    data: Partial<Learner>,
+  ): Promise<Learner | null> {
+    return this.learnerModel.findByIdAndUpdate(id, data, { new: true }).exec();
+  }
 }
