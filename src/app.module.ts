@@ -14,6 +14,8 @@ import { MynameController } from './myname/myname.controller';
 import { UserRolesController } from './user-roles/user-roles.controller';
 import { ExceptionController } from './exception/exception.controller';
 import { LoggerMiddleware } from './middleware/logger/logger.middleware';
+import { DatabaseService } from './database/database.service';
+import { DatabaseController } from './database/database.controller';
 
 @Module({
   imports: [EmployeeModule, CategoryModule, StudentModule, CustomerModule],
@@ -25,8 +27,9 @@ import { LoggerMiddleware } from './middleware/logger/logger.middleware';
     MynameController,
     UserRolesController,
     ExceptionController,
+    DatabaseController,
   ],
-  providers: [AppService, ProductService, CategoryService],
+  providers: [AppService, ProductService, CategoryService, DatabaseService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
