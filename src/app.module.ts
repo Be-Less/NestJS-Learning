@@ -19,11 +19,29 @@ import { DatabaseController } from './database/database.controller';
 import { ConfigModule } from '@nestjs/config';
 import { EnvService } from './env/env.service';
 import { EnvController } from './env/env.controller';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [EmployeeModule, CategoryModule, StudentModule, CustomerModule, ConfigModule.forRoot({
-    isGlobal: true,
-  })],
+  imports: [
+    EmployeeModule,
+    CategoryModule,
+    StudentModule,
+    CustomerModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRoot(process.env.MONGO_URI!),
+  ],
+
+
+  // PREFRERRED in PRODUCTION..
+//   MongooseModule.forRootAsync({
+//   imports: [ConfigModule],
+//   inject: [ConfigService],
+//   useFactory: (configService: ConfigService) => ({
+//     uri: configService.getOrThrow<string>('MONGO_URI'),
+//   }),
+// }),
   controllers: [
     AppController,
     UserController,
@@ -35,7 +53,13 @@ import { EnvController } from './env/env.controller';
     DatabaseController,
     EnvController,
   ],
-  providers: [AppService, ProductService, CategoryService, DatabaseService, EnvService],
+  providers: [
+    AppService,
+    ProductService,
+    CategoryService,
+    DatabaseService,
+    EnvService,
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
