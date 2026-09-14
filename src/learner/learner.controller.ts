@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { LearnerService } from './learner.service';
 import { Learner } from './learner.schema';
 
@@ -24,5 +33,13 @@ export class LearnerController {
   @Put(':id')
   async updateLearner(@Param('id') id: string, @Body() data: Partial<Learner>) {
     return this.learnerService.updateLearner(id, data);
+  }
+  @Patch(':id')
+  async patchLearner(@Param('id') id: string, @Body() data: Partial<Learner>) {
+    return this.learnerService.patchLearner(id, data);
+  }
+  @Delete(':id')
+  async deleteLearner(@Param('id') id: string) {
+    return this.learnerService.deleteLearner(id);
   }
 }
