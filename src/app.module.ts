@@ -20,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
 import { EnvService } from './env/env.service';
 import { EnvController } from './env/env.controller';
 import { MongooseModule } from '@nestjs/mongoose';
+import { LearnerModule } from './learner/learner.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI!),
+    LearnerModule,
   ],
 
 
