@@ -13,4 +13,12 @@ export class LearnerService {
     const newLearner = new this.learnerModel(data);
     return newLearner.save();
   }
+
+  async getAllLearners(): Promise<Learner[]> {
+    return this.learnerModel.find().exec();
+  }
+
+  async getLearnerById(id: string): Promise<Learner | null> {
+    return this.learnerModel.findById(id).exec();
+  }
 }

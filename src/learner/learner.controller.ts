@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { LearnerService } from './learner.service';
 import { Learner } from './learner.schema';
 
@@ -9,5 +9,15 @@ export class LearnerController {
   @Post()
   async addLearner(@Body() data: Partial<Learner>) {
     return this.learnerService.createLearner(data);
+  }
+
+  @Get()
+  async getLearners() {
+    return this.learnerService.getAllLearners();
+  }
+
+  @Get(':id')
+  async getLearnerById(@Param('id') id: string) {
+    return this.learnerService.getLearnerById(id);
   }
 }
