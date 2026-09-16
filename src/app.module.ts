@@ -23,6 +23,9 @@ import { LearnerModule } from './learner/learner.module';
 import { UserModule } from './user/user.module';
 import { EmployerModule } from './employer/employer.module';
 
+import { Product1Module } from './product1/product1.module';
+
+
 
 @Module({
   imports: [
@@ -37,6 +40,7 @@ import { EmployerModule } from './employer/employer.module';
     LearnerModule,
     UserModule,
     EmployerModule,
+    Product1Module,
   ],
 
   // PREFRERRED in PRODUCTION..
@@ -56,6 +60,7 @@ import { EmployerModule } from './employer/employer.module';
     ExceptionController,
     DatabaseController,
     EnvController,
+    
   ],
   providers: [
     AppService,
@@ -63,6 +68,7 @@ import { EmployerModule } from './employer/employer.module';
     CategoryService,
     DatabaseService,
     EnvService,
+    
   ],
 })
 export class AppModule implements NestModule {
