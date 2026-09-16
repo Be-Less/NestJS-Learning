@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './user/user.controller';
 import { ProductService } from './product/product.service';
 import { ProductController } from './product/product.controller';
 import { EmployeeModule } from './employee/employee.module';
@@ -21,6 +20,9 @@ import { EnvService } from './env/env.service';
 import { EnvController } from './env/env.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LearnerModule } from './learner/learner.module';
+import { UserModule } from './user/user.module';
+import { EmployerModule } from './employer/employer.module';
+
 
 @Module({
   imports: [
@@ -33,20 +35,20 @@ import { LearnerModule } from './learner/learner.module';
     }),
     MongooseModule.forRoot(process.env.MONGO_URI!),
     LearnerModule,
+    UserModule,
+    EmployerModule,
   ],
 
-
   // PREFRERRED in PRODUCTION..
-//   MongooseModule.forRootAsync({
-//   imports: [ConfigModule],
-//   inject: [ConfigService],
-//   useFactory: (configService: ConfigService) => ({
-//     uri: configService.getOrThrow<string>('MONGO_URI'),
-//   }),
-// }),
+  //   MongooseModule.forRootAsync({
+  //   imports: [ConfigModule],
+  //   inject: [ConfigService],
+  //   useFactory: (configService: ConfigService) => ({
+  //     uri: configService.getOrThrow<string>('MONGO_URI'),
+  //   }),
+  // }),
   controllers: [
     AppController,
-    UserController,
     ProductController,
     CategoryController,
     MynameController,
