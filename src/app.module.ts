@@ -24,6 +24,7 @@ import { UserModule } from './user/user.module';
 import { EmployerModule } from './employer/employer.module';
 
 import { Product1Module } from './product1/product1.module';
+import { LibraryModule } from './library/library.module';
 
 
 
@@ -41,6 +42,7 @@ import { Product1Module } from './product1/product1.module';
     UserModule,
     EmployerModule,
     Product1Module,
+    LibraryModule,
   ],
 
   // PREFRERRED in PRODUCTION..
